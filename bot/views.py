@@ -20,8 +20,13 @@ class RoleSelectView(discord.ui.View):
 
     @discord.ui.select(placeholder='役割を選択してください', custom_id='role_select', min_values=0, max_values=len(options), options=options)
     async def select_callback(self, select, interaction: discord.Interaction):
-        roles = []
-        for value in select.values:
-            roles.append(self.roles[int(value)])
-        await interaction.user.add_roles(*roles)
+        added_roles = []
+        removed_roles = []
+        for _, value in options:
+            if str(value) in select.values:
+                added_roles.append(self.roles[int(value)])
+            else:
+                removed_roles.append(self.roles[int(value)])
+        await interaction.user.add_roles(*added_roles)
+        await interaction.user.remove_roles(*removed_roles)
         await interaction.response.send_message('役割を選択しました。', ephemeral=True)

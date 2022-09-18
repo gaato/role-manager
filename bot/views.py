@@ -22,7 +22,7 @@ class RoleSelectView(discord.ui.View):
     async def select_callback(self, select, interaction: discord.Interaction):
         added_roles = []
         removed_roles = []
-        for _, value in options:
+        for _, value in config.options:
             if str(value) in select.values:
                 added_roles.append(self.roles[int(value)])
             else:

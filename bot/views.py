@@ -39,7 +39,7 @@ class SelectView1(discord.ui.View):
             self.roles[value] = self.guild.get_role(value)
         return super().__init__(timeout=None)
 
-    @discord.ui.select(placeholder='役割を選択してください', custom_id='select-1', min_values=0, max_values=len(options1), options1=options1)
+    @discord.ui.select(placeholder='役割を選択してください', custom_id='select-1', min_values=0, max_values=len(options1), options=options1)
     async def select_callback(self, select: discord.ui.Select, interaction: discord.Interaction):
         added_roles = []
         removed_roles = []

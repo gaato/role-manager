@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
-from .views import RoleSelectView
+from .views import SelectView1, ButtonView1
 
 
 load_dotenv()
@@ -16,7 +16,8 @@ bot = commands.Bot(intents=intents)
 async def on_ready():
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
     print("------")
-    bot.add_view(RoleSelectView(bot))
+    bot.add_view(SelectView1(bot))
+    bot.add_view(ButtonView1(bot))
 
 
 @bot.command()

@@ -21,8 +21,7 @@ async def on_ready():
     print("------")
     button_channel = client.get_channel(config.select_channel_id)
     view = SelectView1(client)
-    message = await button_channel.send('ご自身の役割を以下から選んでください。', view=view)
-    print(f'BUTTON_MESSAGE_ID = {message.id}')
+    await button_channel.send('ご自身の役割を以下から選んでください。', view=view)
     await client.close()
 
 
